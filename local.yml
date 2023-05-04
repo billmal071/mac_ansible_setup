@@ -1,0 +1,42 @@
+---
+- become: true
+  connection: local
+  hosts: localhost
+  name: "Setup new macbook"
+
+  pre_tasks:
+    - community.general.homebrew:
+      update_homebrew: true
+      upgrade_all: true
+
+    - community.general.homebrew:
+      name: git
+      state: latest
+      update_homebrew: true
+
+  tasks:
+  - name: Find Java 17 installation path
+    command: /usr/libexec/java_home -v 17
+    register: java_17_home
+
+  - name: Add Java 17 path to .zshrc
+    ansible.builtin.lineinfile:
+      path: ~/.zshrc
+      line: 'export JAVA_17_HOME={{ java_17_home.stdout }}'
+      state: present
+      create: yes
+      insertafter: EOF
+
+  - name: Add Java 17 bin to PATH in .zshrc
+    ansible.builtin.lineinfile:
+      path: ~/.zshrc
+      line: 'export PATH=$JAVA_17_HOME/bin:$PATH'
+      state: present
+      create: yes
+      insertafter: EOF
+
+  - name: install tomcat
+    community.general.homebrew:
+      name: tomcat9, nginx, openssl, homebrew/cask/jetbrains-toolbox, homebrew/cask/azure-data-studio, homebrew/cask/postman, homebrew/cask/docker
+      state: latest
+      update_homebrew: true
