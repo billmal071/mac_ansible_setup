@@ -1,5 +1,5 @@
 ---
-- become: true
+- become: false
   connection: local
   gather-facts: false
   hosts: localhost
