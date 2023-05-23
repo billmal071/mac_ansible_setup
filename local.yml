@@ -6,13 +6,13 @@
 
   pre_tasks:
     - community.general.homebrew:
-      update_homebrew: true
-      upgrade_all: true
+        update_homebrew: true
+        upgrade_all: true
 
     - community.general.homebrew:
-      name: git
-      state: latest
-      update_homebrew: true
+        name: git
+        state: latest
+        update_homebrew: true
 
   tasks:
   - name: Find Java 17 installation path
