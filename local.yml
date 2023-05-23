@@ -1,8 +1,8 @@
 ---
 - become: false
   connection: local
-  gather-facts: false
   hosts: localhost
+  gather_facts: false
   name: "Setup new macbook"
 
   pre_tasks:
