@@ -18,6 +18,13 @@
   tasks:
   - name: install tomcat
     community.general.homebrew:
-      name: tomcat@9, nginx, openssl, homebrew/cask/jetbrains-toolbox, homebrew/cask/azure-data-studio, homebrew/cask/postman, homebrew/cask/docker
+      name:
+          - tomcat@9
+          - nginx
+          - openssl
+          - homebrew/cask/jetbrains-toolbox
+          - homebrew/cask/azure-data-studio
+          - homebrew/cask/postman
+          - homebrew/cask/docker
       state: latest
       update_homebrew: true
