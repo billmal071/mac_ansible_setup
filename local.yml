@@ -1,6 +1,7 @@
 ---
 - become: true
   connection: local
+  gather-facts: false
   hosts: localhost
   name: "Setup new macbook"
 
